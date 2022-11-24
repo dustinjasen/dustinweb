@@ -1,0 +1,135 @@
+.skillBoxContainer {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  .testSwitch {
+    height: 20px;
+    position: absolute;
+    z-index: 99;
+    width: 20px;
+    border: 1px solid red;
+  }
+  .skillBoxData {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0px 0px 20px;
+    gap: 5%;
+    .skillTitle {
+      font-family: "Poor Story";
+      font-size: 3.5rem;
+      padding: 3% 0% 0% 2.5%;
+      .devLogo {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .levelsTable {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 90%;
+      tbody {
+        height: 100%;
+        width: 100%;
+        .skillIcon {
+          font-size: 2rem;
+        }
+
+        .levelsHeading {
+          font-size: 1.75rem;
+          padding: 0px 15px;
+        }
+        .levelRank {
+          font-size: 1.1rem;
+        }
+
+        td {
+          text-align: center;
+          font-size: 1.4rem;
+          height: 2.1rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1450px) {
+  .skillBoxContainer {
+    .skillBoxData {
+      padding: 5px 0px 0px 5px;
+      gap: 5%;
+      height: 100%;
+      width: 100%;
+      .skillTitle {
+        font-size: 3.25rem;
+      }
+      .levelsTable {
+        tbody {
+          .skillIcon {
+            font-size: 1.5rem;
+          }
+          .levelsHeading {
+            font-size: 1.3rem;
+            padding: 0px 15px;
+          }
+          .levelRank {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .skillBoxContainer {
+    z-index: 11;
+
+    .skillBoxData {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0px 0px 0px 0px;
+      gap: 0;
+      z-index: 11;
+      .skillTitle {
+        font-family: "Poor Story";
+        font-size: 2.25rem;
+        padding: 10% 0% 0% 10%;
+        margin: 0;
+      }
+      .levelsTable {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 92%;
+        height: 100%;
+        margin: 0;
+        padding-left: 3.5%;
+        tbody {
+          .skillIcon {
+            font-size: 1.2rem;
+          }
+
+          .levelsHeading {
+            font-size: 1.15rem;
+            padding: 0px 5px;
+          }
+
+          .levelRank {
+            font-size: 1rem;
+          }
+
+          td {
+            text-align: center;
+            font-size: 1.15rem;
+          }
+        }
+      }
+    }
+  }
+}

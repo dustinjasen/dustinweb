@@ -1,0 +1,262 @@
+.skillTree {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 94vw;
+  width: 94vw;
+  height: 100%;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+
+    .techHeading {
+      align-self: center;
+      text-align: center;
+      font-size: 10rem;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      color: rgba(255, 255, 255, 0.33);
+    }
+
+    .techHeading:hover {
+      color: white;
+      transition: 0.5s;
+    }
+
+    .openAppsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .contentSubHeading {
+        text-align: center;
+        font-size: 2rem;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .languageContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        gap: 15px;
+        span {
+          --animate-delay: 0.5s;
+          list-style: none;
+          padding-bottom: 5px;
+          font-size: 2rem;
+          text-align: center;
+          margin: 0;
+          cursor: pointer;
+        }
+      }
+
+      .libraryContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        gap: 15px;
+        span {
+          --animate-delay: 0.5s;
+          list-style: none;
+          padding-bottom: 5px;
+          font-size: 2rem;
+          text-align: center;
+          margin: 0;
+          cursor: pointer;
+        }
+      }
+
+      .defoIcon {
+        span {
+          --animate-delay: 0.8s;
+          list-style: none;
+          padding-bottom: 5px;
+          font-size: 2rem;
+          text-align: center;
+          margin: 0;
+          cursor: pointer;
+          .defoLogo {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+
+  .skillTreeModalContainer {
+    display: block;
+    float: right;
+    .skillDetails {
+      display: block;
+      float: right;
+      height: 90%;
+      width: 100%;
+      padding: 20px;
+      background-color: #46405164;
+      border-radius: 25px;
+      .skillLevelDefinitionContainer {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 5px;
+        gap: 15px;
+        height: 100%;
+        width: 100%;
+        font-size: 1.3rem;
+        .skillLevelDefined {
+          display: flex;
+          flex-direction: column;
+          white-space: normal;
+          padding-left: 10px;
+          .skillDefHeading {
+            display: flex;
+            text-align: left;
+            font-weight: bold;
+            padding-left: 3%;
+            padding-bottom: 10px;
+            font-size: 1.75rem;
+            vertical-align: middle;
+            .skillLevelDefinedIcon {
+              display: flex;
+              vertical-align: middle;
+              font-size: 2rem;
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .skillTree {
+    position: relative;
+    min-width: 100vw;
+    width: 100vw;
+
+    .content {
+      .techHeading {
+        font-size: 3.5rem;
+      }
+
+      .openAppsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        padding-top: 10px;
+        .languageContainer {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          margin: 0;
+          padding: 0;
+          gap: 15px;
+          span {
+            --animate-delay: 0.5s;
+            list-style: none;
+            padding-bottom: 5px;
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 0;
+            cursor: pointer;
+          }
+        }
+
+        .libraryContainer {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          margin: 0;
+          padding: 0;
+          gap: 15px;
+          span {
+            --animate-delay: 0.5s;
+            list-style: none;
+            padding-bottom: 5px;
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 0;
+            cursor: pointer;
+          }
+        }
+
+        .defoIcon {
+          span {
+            --animate-delay: 0.8s;
+            list-style: none;
+            padding-bottom: 5px;
+            font-size: 2rem;
+            text-align: center;
+            margin: 0;
+            cursor: pointer;
+            .defoLogo {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
+
+    .skillTreeModalContainer {
+      position: absolute;
+      top: 75%;
+      left: 50%;
+      -ms-transform: translate(-50%, -75%);
+      transform: translate(-50%, -75%);
+      width: 90%;
+
+      .skillDetails {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        background-color: #464051f3;
+        border-radius: 20px;
+        z-index: 5;
+        .skillLevelDefinitionContainer {
+          display: flex;
+          flex-direction: column;
+          padding: 0px 15px;
+          gap: 10px;
+          height: 100%;
+          width: 100%;
+          .skillLevelDefined {
+            margin: 0;
+            .skillDefHeading {
+              display: block;
+              text-align: left;
+              font-weight: bold;
+              padding-left: 2.5%;
+              .skillLevelDefinedIcon {
+                display: inline-block;
+                vertical-align: middle;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

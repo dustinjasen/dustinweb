@@ -1,0 +1,565 @@
+.folioContainer {
+  position: relative;
+  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  max-width: 100vw;
+  z-index: 3;
+  background-color: #14121aaf;
+  color: white;
+  scroll-snap-align: center;
+
+  .scrollNextPage {
+    position: absolute;
+    z-index: 99;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+  .scrollNextPage:hover {
+    color: yellow;
+  }
+
+  .scrollPrevPage {
+    position: absolute;
+    z-index: 99;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    right: 66px;
+    top: 10px;
+    cursor: pointer;
+  }
+  .scrollPrevPage:hover {
+    color: white;
+  }
+
+  .tipsIconContainer {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    display: flex;
+    flex-direction: row;
+    z-index: 20;
+    .aboutIcon {
+      font-size: 2.5rem;
+      color: rgba(255, 255, 255, 0.33);
+      cursor: pointer;
+    }
+    .aboutIcon:hover {
+      color: white;
+    }
+    .insightsIcon {
+      font-size: 2.5rem;
+      color: rgba(255, 255, 255, 0.33);
+      cursor: pointer;
+    }
+    .insightsIcon:hover {
+      color: rgb(255, 157, 0);
+    }
+  }
+
+  .helpContentContainer {
+    position: relative;
+    cursor: pointer;
+
+    .aboutTipContainer {
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      top: 65px;
+      left: 40px;
+      z-index: 20;
+      white-space: normal;
+      border-radius: 15px;
+      margin-left: 10px;
+      width: 45vw;
+      max-width: 45vw;
+      height: auto;
+      border: 5px solid white;
+      background-color: rgb(0, 0, 66);
+      color: white;
+      padding: 15px;
+      scrollbar-width: none;
+      overflow-y: scroll;
+      .aboutIconMark {
+        font-size: 3rem;
+      }
+      .aboutTipText {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 1rem;
+        padding: 10px;
+      }
+    }
+    .myBubbleHead {
+      position: absolute;
+      top: 65px;
+      left: 40px;
+      height: 72px;
+      width: 72px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 2.5px solid rgba(255, 157, 0, 0.9);
+      z-index: 5;
+    }
+    ::-webkit-scrollbar {
+      width: 0px;
+      background-color: #000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #336;
+    }
+    .insightsContainer {
+      position: absolute;
+      top: 20px;
+      left: 127px;
+      z-index: 20;
+      white-space: normal;
+      border-radius: 25px;
+      padding: 10px;
+      width: auto;
+      max-width: 60vw;
+      height: auto;
+      max-height: 90vh;
+      border: 5px solid rgba(255, 157, 0, 0.9);
+      background-color: rgba(0, 0, 0);
+      color: white;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      ::-webkit-scrollbar {
+        width: 1px;
+        background-color: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #336;
+      }
+      .insightsHeading {
+        font-family: sans-serif;
+        font-size: 1.2rem;
+        font-variant: small-caps;
+        padding-left: 10px;
+        margin: 0;
+      }
+      .insightsText {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        padding: 10px;
+      }
+    }
+    .insightsPointer {
+      position: absolute;
+      display: block;
+      width: 0;
+      z-index: 12;
+      border-style: solid;
+      border-color: transparent rgba(255, 157, 0, 0.9);
+      border-width: 11px 42px 11px 0;
+      top: 128px;
+      left: 85px;
+      margin-top: -11px;
+    }
+  }
+
+  .folioHeading {
+    position: absolute;
+    top: 8px;
+    left: 140px;
+    font-size: 4.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  .folioWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+
+    .folioContent {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+
+      .folioLogoContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+        .folioThumbContainer {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          height: 58%;
+          width: auto;
+          cursor: pointer;
+
+          .folioInfoMHW {
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            z-index: 5;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            color: #336;
+          }
+
+          .folioLinkMHW {
+            position: absolute;
+            bottom: 0%;
+            right: -10%;
+            z-index: 5;
+            width: 50px;
+            height: 50px;
+            cursor: not-allowed;
+            color: #fff;
+          }
+
+          .folioInfoDIR {
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            z-index: 5;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            color: #dc5900;
+          }
+
+          .folioLinkDIR {
+            position: absolute;
+            bottom: 0%;
+            right: 0%;
+            z-index: 5;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            color: #fff;
+          }
+
+          .folioInfoSpecks {
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            z-index: 5;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            color: #203cf2;
+          }
+
+          .folioLinkSpecks {
+            position: absolute;
+            bottom: 0%;
+            right: 0%;
+            z-index: 5;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            color: #fff;
+          }
+
+          .folioInfoSpecks:hover,
+          .folioInfoDIR:hover,
+          .folioInfoMHW:hover {
+            color: yellow;
+          }
+
+          .folioLinkMHW:hover,
+          .folioLinkDIR:hover,
+          .folioLinkSpecks:hover {
+            color: goldenrod;
+          }
+
+          .folioThumbMHWImage,
+          .folioThumbDIRImage,
+          .folioThumbMAPImage {
+            position: relative;
+            display: flex;
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+            cursor: pointer;
+            border: solid 4px #d0c0ec;
+            padding: 5%;
+            border-radius: 50%;
+          }
+          .folioThumbMHWImage:hover,
+          .folioThumbDIRImage:hover,
+          .folioThumbMAPImage:hover {
+            transform: scale(1.25);
+            padding: 0;
+            transition: 1s;
+          }
+        }
+      }
+    }
+
+    .folioCustomSlider {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      z-index: 13;
+      background-color: rgba(13, 0, 35, 0.666);
+
+      .folioSliderWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 90%;
+        width: 86%;
+        border-radius: 25px;
+
+        .folioImg {
+          height: auto;
+          max-height: 80%;
+          width: 80%;
+          object-fit: contain;
+        }
+        .slideCaption {
+          font-family: Arial, Helvetica, sans-serif;
+          background-color: black;
+          border: 4px solid white;
+          margin-top: 5px;
+          padding: 20px;
+          width: auto;
+        }
+      }
+
+      .goLeft {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 5rem;
+        cursor: pointer;
+        border-radius: 50%;
+        padding: 5px;
+      }
+      .goRight {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 5rem;
+        cursor: pointer;
+        border-radius: 50%;
+        padding: 5px;
+      }
+      .goRight:hover,
+      .goLeft:hover {
+        background-color: rgba(0, 0, 0, 0.33);
+        border-radius: 50%;
+        padding: 5px;
+        transition: 500ms;
+      }
+    }
+
+    .folioInfoContainer {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      z-index: 13;
+      background-color: rgba(28, 7, 0, 0.85);
+
+      .folioInfoWrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        height: 90%;
+        width: 86%;
+        border-radius: 25px;
+        overflow-y: auto;
+        .folioProjectTextBlock {
+          display: flex;
+          flex-direction: column;
+          width: fit-content;
+          height: fit-content;
+          padding: 10px;
+          border: 3px solid white;
+          border-radius: 25px;
+          font-size: 1.2rem;
+          background-color: #dc28004b;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .folioContainer {
+    .folioHeading {
+      top: 28px;
+      left: 120px;
+      font-size: 1.7rem;
+    }
+
+    .helpContentContainer {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+
+      .aboutTipContainer {
+        top: 60px;
+        left: 0px;
+        padding: 5px;
+        width: 94vw;
+        max-width: 94vw;
+        height: auto;
+        max-height: 75vh;
+        .aboutTipText {
+          font-size: 0.95rem;
+        }
+      }
+      .myBubbleHead {
+        top: 8px;
+        left: 55px;
+        height: 50px;
+        width: 50px;
+        z-index: 20;
+      }
+      .insightsContainer {
+        top: 55px;
+        left: -5px;
+        z-index: 20;
+        margin-left: 10px;
+        padding: 10px;
+        width: 96vw;
+        max-width: 96vw;
+        height: auto;
+        max-height: 75vh;
+      }
+      .insightsPointer {
+        display: none;
+      }
+    }
+
+    .folioWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .folioContent {
+        flex-direction: column;
+
+        .folioLogoContainer {
+          flex-direction: column;
+
+          .folioThumbContainer {
+            flex-direction: column;
+            margin-top: -10px;
+            height: 27.5%;
+            width: 27.5%;
+
+            .folioInfoMHW {
+              right: -60%;
+              width: 40px;
+              height: 40px;
+            }
+
+            .folioInfoDIR {
+              right: -60%;
+              width: 40px;
+              height: 40px;
+            }
+
+            .folioInfoSpecks {
+              position: absolute;
+              right: -60%;
+              width: 40px;
+              height: 40px;
+            }
+
+            .folioLinkSpecks,
+            .folioLinkDIR,
+            .folioLinkMHW {
+              right: unset;
+              left: -60%;
+              width: 40px;
+              height: 40px;
+            }
+
+            .folioThumbMHWImage,
+            .folioThumbDIRImage,
+            .folioThumbMAPImage {
+              border: solid 3px #d0c0ec;
+              padding: 10%;
+              border-radius: 50%;
+            }
+
+            .folioThumbMHWImage:hover,
+            .folioThumbDIRImage:hover,
+            .folioThumbMAPImage:hover {
+              transform: scale(1.5);
+            }
+          }
+        }
+      }
+
+      .folioCustomSlider {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.45);
+        top: 0;
+
+        .folioSliderWrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 90%;
+          width: 100%;
+
+          .folioImg {
+            margin: 0 auto;
+            height: auto;
+            max-height: 95%;
+            width: 95%;
+            object-fit: contain;
+          }
+        }
+
+        .goLeft {
+          top: 15%;
+          transform: translateY(-15%);
+          font-size: 2.5rem;
+        }
+        .goRight {
+          top: 15%;
+          transform: translateY(-15%);
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}

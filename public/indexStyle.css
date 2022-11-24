@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
+
+::-webkit-scrollbar {
+  height: 7px;
+  background-color: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #336;
+}
+
+html,
+body {
+  height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Poor Story", -apple-system, BlinkMacSystemFont, "Roboto",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  scrollbar-color: #336;
+  scrollbar-base-color: #336;
+  scrollbar-track-color: #336;
+  scrollbar-face-color: #336;
+}
+
+* {
+  box-sizing: border-box;
+}

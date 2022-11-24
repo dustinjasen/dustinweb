@@ -1,0 +1,1240 @@
+.homePage {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: 1px;
+  scrollbar-color: #336;
+  scrollbar-width: thin;
+  scroll-snap-type: x mandatory;
+
+  .screenOne {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+  .screenTwo {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+  .screenThree {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+  .screenFour {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+
+  #kayakImg {
+    position: relative;
+    z-index: 1;
+    width: auto;
+    height: 100%;
+    border-radius: 0% 50% 50% 0%;
+  }
+
+  .kayakStart {
+    position: fixed;
+    height: 20vh;
+    width: auto;
+    z-index: 2;
+    bottom: 20px;
+    left: -100%;
+  }
+
+  .kayakBottomStraight {
+    position: fixed;
+    height: 20vh;
+    width: auto;
+    z-index: 2;
+    bottom: 20px;
+    transform: skew(0deg, 0deg);
+    left: 0px;
+    transition: 0.5s;
+  }
+
+  .kayakMiddleSpinOut {
+    height: 19vh;
+    #kayakImg {
+      border-radius: 50%;
+    }
+
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+
+    -moz-animation-name: spin;
+    -moz-animation-duration: 5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+
+    -ms-animation-name: spin;
+    -ms-animation-duration: 5s;
+    -ms-animation-iteration-count: 1;
+    -ms-animation-timing-function: linear;
+
+    animation-name: spin;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+
+    @-moz-keyframes spin {
+      0% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: -100px;
+        transform: skew(15deg, 20deg);
+        transition: 0.2s;
+      }
+      10% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: skew(-15deg, -20deg);
+        transition: 0.2s;
+      }
+
+      20% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: skew(15deg, 20deg);
+      }
+
+      30% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: rotate(0deg);
+      }
+
+      65% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 40%;
+        bottom: 20px;
+        transform: rotate(360deg);
+        transition: 1s;
+      }
+
+      80% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 80%;
+        bottom: 20px;
+        transform: skew(0deg, 0deg);
+      }
+
+      99% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: skew(0deg, 0deg);
+        left: 100%;
+      }
+
+      100% {
+        left: 150%;
+        display: none;
+      }
+    }
+    @-webkit-keyframes spin {
+      0% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: -100px;
+        transform: skew(15deg, 20deg);
+        transition: 0.2s;
+      }
+      10% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: skew(-15deg, -20deg);
+        transition: 0.2s;
+      }
+
+      20% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: skew(15deg, 20deg);
+      }
+
+      30% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: rotate(0deg);
+      }
+
+      65% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 40%;
+        bottom: 20px;
+        transform: rotate(360deg);
+        transition: 1s;
+      }
+
+      80% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 80%;
+        bottom: 20px;
+        transform: skew(0deg, 0deg);
+      }
+
+      99% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: skew(0deg, 0deg);
+        left: 100%;
+      }
+
+      100% {
+        left: 150%;
+        display: none;
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: -100px;
+        transform: skew(15deg, 20deg);
+        transition: 0.2s;
+      }
+      10% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: skew(-15deg, -20deg);
+        transition: 0.2s;
+      }
+
+      20% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: skew(15deg, 20deg);
+      }
+
+      30% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: rotate(0deg);
+      }
+
+      65% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 40%;
+        bottom: 20px;
+        transform: rotate(360deg);
+        transition: 1s;
+      }
+
+      80% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 80%;
+        bottom: 20px;
+        transform: skew(0deg, 0deg);
+      }
+
+      99% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: skew(0deg, 0deg);
+        left: 100%;
+      }
+
+      100% {
+        left: 150%;
+        display: none;
+      }
+    }
+  }
+
+  .kayakMovementDive {
+    height: 19vh;
+
+    #kayakImg {
+      -webkit-animation-name: dive;
+      -webkit-animation-duration: 5s;
+      -webkit-animation-iteration-count: 1;
+      -webkit-animation-timing-function: linear;
+
+      -moz-animation-name: dive;
+      -moz-animation-duration: 5s;
+      -moz-animation-iteration-count: 1;
+      -moz-animation-timing-function: linear;
+
+      -ms-animation-name: dive;
+      -ms-animation-duration: 5s;
+      -ms-animation-iteration-count: 1;
+      -ms-animation-timing-function: linear;
+
+      animation-name: dive;
+      animation-duration: 5s;
+      animation-iteration-count: 1;
+      animation-timing-function: linear;
+
+      @-moz-keyframes dive {
+        0% {
+          transform-style: preserve-3d;
+          transform: rotateY(20deg);
+          border-radius: 50%;
+        }
+        10% {
+          transform-style: preserve-3d;
+          transform: rotateY(15deg);
+        }
+
+        20% {
+          transform-style: preserve-3d;
+          transform: rotateY(10deg);
+        }
+        30% {
+          transform-style: preserve-3d;
+          transform: rotateY(5deg);
+        }
+
+        100% {
+          transform-style: preserve-3d;
+          transform: rotateY(-22deg);
+          border-radius: 50%;
+        }
+      }
+      @-webkit-keyframes dive {
+        0% {
+          transform-style: preserve-3d;
+          transform: rotateY(20deg);
+          border-radius: 50%;
+        }
+        10% {
+          transform-style: preserve-3d;
+          transform: rotateY(15deg);
+        }
+
+        20% {
+          transform-style: preserve-3d;
+          transform: rotateY(10deg);
+        }
+        30% {
+          transform-style: preserve-3d;
+          transform: rotateY(5deg);
+        }
+
+        100% {
+          transform-style: preserve-3d;
+          transform: rotateY(-22deg);
+          border-radius: 50%;
+        }
+      }
+
+      @keyframes dive {
+        0% {
+          transform-style: preserve-3d;
+          transform: rotateY(20deg);
+          border-radius: 50%;
+        }
+        10% {
+          transform-style: preserve-3d;
+          transform: rotateY(15deg);
+        }
+
+        20% {
+          transform-style: preserve-3d;
+          transform: rotateY(10deg);
+        }
+        30% {
+          transform-style: preserve-3d;
+          transform: rotateY(5deg);
+        }
+
+        100% {
+          transform-style: preserve-3d;
+          transform: rotateY(-22deg);
+          border-radius: 50%;
+        }
+      }
+    }
+
+    -webkit-animation-name: diveContainer;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+
+    -moz-animation-name: diveContainer;
+    -moz-animation-duration: 5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+
+    -ms-animation-name: diveContainer;
+    -ms-animation-duration: 5s;
+    -ms-animation-iteration-count: 1;
+    -ms-animation-timing-function: linear;
+
+    animation-name: diveContainer;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+
+    @-moz-keyframes diveContainer {
+      0% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: -50px;
+        transition: 0.5s;
+        perspective-origin: left right;
+        perspective: 100px;
+      }
+
+      20% {
+        position: fixed;
+        height: 17vh;
+        perspective: 100px;
+      }
+
+      30% {
+        position: fixed;
+        height: 16vh;
+        perspective: 100px;
+      }
+
+      50% {
+        position: fixed;
+        height: 16vh;
+        perspective: 100px;
+      }
+
+      80% {
+        position: fixed;
+        height: 17vh;
+        perspective: 100px;
+        perspective-origin: left right;
+      }
+
+      90% {
+        position: fixed;
+        height: 18vh;
+        perspective: 100px;
+        perspective-origin: left right;
+      }
+
+      99% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        height: 19vh;
+        perspective: 100px;
+        perspective-origin: left right;
+      }
+
+      100% {
+        left: 110%;
+        display: none;
+      }
+    }
+    @-webkit-keyframes diveContainer {
+      0% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: -50px;
+        transition: 0.5s;
+        perspective-origin: left right;
+        perspective: 100px;
+      }
+
+      20% {
+        position: fixed;
+        height: 17vh;
+        perspective: 100px;
+      }
+
+      30% {
+        position: fixed;
+        height: 16vh;
+        perspective: 100px;
+      }
+
+      50% {
+        position: fixed;
+        height: 16vh;
+        perspective: 100px;
+      }
+
+      80% {
+        position: fixed;
+        height: 17vh;
+        perspective: 100px;
+        perspective-origin: left right;
+      }
+
+      90% {
+        position: fixed;
+        height: 18vh;
+        perspective: 100px;
+        perspective-origin: left right;
+      }
+
+      99% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        height: 19vh;
+        perspective: 100px;
+        perspective-origin: left right;
+      }
+
+      100% {
+        left: 110%;
+        display: none;
+      }
+    }
+
+    @keyframes diveContainer {
+      0% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: -50px;
+        transition: 0.5s;
+        perspective-origin: left right;
+        perspective: 100px;
+      }
+
+      20% {
+        position: fixed;
+        height: 17vh;
+        perspective: 100px;
+      }
+
+      30% {
+        position: fixed;
+        height: 16vh;
+        perspective: 100px;
+      }
+
+      50% {
+        position: fixed;
+        height: 16vh;
+        perspective: 100px;
+      }
+
+      80% {
+        position: fixed;
+        height: 17vh;
+        perspective: 100px;
+        perspective-origin: left right;
+      }
+
+      90% {
+        position: fixed;
+        height: 18vh;
+        perspective: 100px;
+        perspective-origin: left right;
+      }
+
+      99% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        height: 19vh;
+        perspective: 100px;
+        perspective-origin: left right;
+      }
+
+      100% {
+        left: 110%;
+        display: none;
+      }
+    }
+  }
+
+  .kayakEnd {
+    height: 19vh;
+    position: fixed;
+    width: auto;
+    z-index: 2;
+    left: 60%;
+    bottom: 80%;
+    #kayakImg {
+      border-radius: 50%;
+    }
+
+    -webkit-animation-name: endGame;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: endGame;
+    -moz-animation-duration: 5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: endGame;
+    -ms-animation-duration: 5s;
+    -ms-animation-iteration-count: 1;
+    -ms-animation-timing-function: linear;
+
+    animation-name: endGame;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+
+    @-moz-keyframes endGame {
+      0% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: -10px;
+        transform: rotate(0deg);
+      }
+
+      20% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: rotate(-45deg);
+        left: 20%;
+      }
+
+      30% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: 40%;
+        transform: rotate(-90deg);
+        bottom: 20px;
+      }
+
+      40% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 40%;
+        bottom: 70%;
+      }
+
+      90% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 50%;
+        bottom: 80%;
+      }
+
+      100% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 60%;
+        bottom: 80%;
+    }
+  }
+    @-webkit-keyframes endGame {
+      0% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: -10px;
+        transform: rotate(0deg);
+      }
+
+      20% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        transform: rotate(-45deg);
+        left: 20%;
+      }
+
+      30% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: 40%;
+        transform: rotate(-90deg);
+      }
+
+      40% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 40%;
+        bottom: 70%;
+      }
+
+      90% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 50%;
+        bottom: 80%;
+      }
+
+      100% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 60%;
+        bottom: 80%;
+    }
+  }
+
+    @keyframes endGame {
+      0% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        bottom: 20px;
+        left: -10px;
+        transform: rotate(0deg);
+      }
+
+      20% {
+        position: fixed;
+        width: auto;
+        transform: rotate(-45deg);
+        left: 20%;
+      }
+
+      30% {
+        position: fixed;
+        width: auto;
+        left: 40%;
+        transform: rotate(-90deg);
+        bottom: 20px;
+      }
+
+      40% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 40%;
+        bottom: 70%;
+      }
+
+      90% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 50%;
+        bottom: 80%;
+      }
+
+      100% {
+        position: fixed;
+        width: auto;
+        z-index: 2;
+        left: 60%;
+        bottom: 80%;
+      }
+    }
+  }
+
+  .kayakSendOff {
+    height: 19vh;
+    position: fixed;
+    width: auto;
+    z-index: 2;
+    left: 100%;
+    bottom: 80%;
+    transition: 1s;
+    #kayakImg {
+      border-radius: 50%;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .homePage {
+    .kayakStart,
+    .kayakBottomStraight,
+    .kayakMiddleSpinOut {
+      height: 10vh;
+    }
+
+    .kayakMovementDive {
+      height: 10vh;
+      @-moz-keyframes diveContainer {
+        0% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          bottom: 20px;
+          left: -50px;
+          transition: 0.5s;
+          perspective-origin: left right;
+          perspective: 100px;
+        }
+
+        20% {
+          height: 7vh;
+        }
+
+        30% {
+          height: 6vh;
+        }
+
+        50% {
+          height: 7vh;
+        }
+
+        80% {
+          height: 8vh;
+        }
+
+        90% {
+          height: 9vh;
+        }
+
+        99% {
+          height: 10vh;
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          bottom: 20px;
+          perspective: 100px;
+          perspective-origin: left right;
+        }
+
+        100% {
+          left: 110%;
+          display: none;
+        }
+      }
+      @-webkit-keyframes diveContainer {
+        0% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          bottom: 20px;
+          left: -50px;
+          transition: 0.5s;
+          perspective-origin: left right;
+          perspective: 100px;
+        }
+
+        20% {
+          height: 7vh;
+        }
+
+        30% {
+          height: 6vh;
+        }
+
+        50% {
+          height: 7vh;
+        }
+
+        80% {
+          height: 8vh;
+        }
+
+        90% {
+          height: 9vh;
+        }
+
+        99% {
+          height: 10vh;
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          bottom: 20px;
+          perspective: 100px;
+          perspective-origin: left right;
+        }
+
+        100% {
+          left: 110%;
+          display: none;
+        }
+      }
+
+      @keyframes diveContainer {
+        0% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          bottom: 20px;
+          left: -50px;
+          transition: 0.5s;
+          perspective-origin: left right;
+          perspective: 100px;
+        }
+
+        20% {
+          height: 7vh;
+        }
+
+        30% {
+          height: 6vh;
+        }
+
+        50% {
+          height: 7vh;
+        }
+
+        80% {
+          height: 8vh;
+        }
+
+        90% {
+          height: 9vh;
+        }
+
+        99% {
+          height: 10vh;
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          bottom: 20px;
+          perspective: 100px;
+          perspective-origin: left right;
+        }
+
+        100% {
+          left: 110%;
+          display: none;
+        }
+      }
+    }
+
+    .kayakEnd {
+      height: 10vh;
+      position: fixed;
+      width: auto;
+      z-index: 2;
+      left: 20%;
+      bottom: 120%;
+      @-moz-keyframes endGame {
+        0% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          bottom: 20px;
+          left: -10px;
+          transform: rotate(0deg);
+        }
+
+        20% {
+          transform: rotate(-45deg);
+          left: 10%;
+        }
+
+        30% {
+          left: 20%;
+          transform: rotate(-90deg);
+          bottom: 20px;
+        }
+
+        40% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          left: 20%;
+          bottom: 70%;
+        }
+
+        100% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          left: 20%;
+          bottom: 120%;
+        }
+      }
+      @-webkit-keyframes endGame {
+        0% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          bottom: 20px;
+          left: -10px;
+          transform: rotate(0deg);
+        }
+
+        20% {
+          transform: rotate(-45deg);
+          left: 10%;
+        }
+
+        30% {
+          left: 20%;
+          transform: rotate(-90deg);
+          bottom: 20px;
+        }
+
+        40% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          left: 20%;
+          bottom: 70%;
+        }
+
+        100% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          left: 20%;
+          bottom: 120%;
+        }
+      }
+      @keyframes endGame {
+        0% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          bottom: 20px;
+          left: -10px;
+          transform: rotate(0deg);
+        }
+
+        20% {
+          transform: rotate(-45deg);
+          left: 10%;
+        }
+
+        30% {
+          left: 20%;
+          transform: rotate(-90deg);
+          bottom: 20px;
+        }
+
+        40% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          left: 20%;
+          bottom: 70%;
+        }
+
+        99% {
+          position: fixed;
+          width: auto;
+          z-index: 2;
+          left: 20%;
+          bottom: 120%;
+        }
+
+        100% {
+          display: none;
+        }
+      }
+    }
+
+    .kayakSendOff {
+      bottom: 90%;
+      height: 10vh;
+    }
+  }
+
+  //  removed classes //
+  //////////////////////
+  // .kayakMovementUp {
+  //   position: fixed;
+  //   height: 20vh;
+  //   width: auto;
+  //   z-index: 2;
+  //   bottom: 50px;
+  //   left: -100px;
+  //   transform: skew(-15deg, -20deg);
+  //   transition: 1s;
+  // }
+  // .kayakMovementDown {
+  //   position: fixed;
+  //   height: 20vh;
+  //   width: auto;
+  //   z-index: 2;
+  //   bottom: 20px;
+  //   left: -100px;
+  //   transform: skew(15deg, 20deg);
+  //   transition: 1s;
+  // }
+  // .kayakBottomStraight {
+  //   position: fixed;
+  //   height: 20vh;
+  //   width: auto;
+  //   z-index: 2;
+  //   bottom: 20px;
+  //   transform: skew(0deg, 0deg);
+  //   left: 0px;
+  //   transition: 0.5s;
+  // }
+  // .kayakFly {
+  //   position: fixed;
+  //   height: 30vh;
+  //   width: auto;
+  //   z-index: 2;
+  //   bottom: 20px;
+  //   left: -80px;
+  //   transition: 0.5s;
+  //   perspective-origin: left right;
+  //   perspective: 100px;
+  //   border-radius: 50%;
+  //   #kayakImg {
+  //     transition: 0.5s;
+  //     transform-style: preserve-3d;
+  //     transform: rotateY(-5deg);
+  //     border-radius: 50%;
+  //   }
+  // }
+  // .kayakMiddleStraight {
+  //   position: fixed;
+  //   height: 20vh;
+  //   width: auto;
+  //   z-index: 2;
+  //   bottom: 20px;
+  //   transform: skew(0deg, 0deg);
+  //   left: -30px;
+  //   transition: 0.5s;
+  //   #kayakImg {
+  //     border-radius: 0% 50% 50% 0%;
+  //   }
+  // }
+  // .kayakMovementBob {
+  //   position: fixed;
+  //   height: 18vh;
+  //   width: auto;
+  //   z-index: 1;
+  //   bottom: 20px;
+  //   transform: skew(0deg, 0deg);
+  //   left: -40px;
+  //   transition: 1s;
+  //   perspective-origin: left right;
+  //   perspective: 100px;
+  //   #kayakImg {
+  //     z-index: 1;
+  //     transition: 0.5s;
+  //     transform-style: preserve-3d;
+  //     transform: rotateY(5deg);
+  //   }
+  // }
+  // .kayakBottomUnderLogo {
+  //   position: fixed;
+  //   height: 16vh;
+  //   width: auto;
+  //   z-index: 1;
+  //   bottom: 20px;
+  //   transform: skew(0deg, 0deg);
+  //   left: 0px;
+  //   transition: 1s;
+  //   perspective-origin: left right;
+  //   perspective: 100px;
+  //   #kayakImg {
+  //     z-index: 1;
+  //     transition: 0.5s;
+  //     transform-style: preserve-3d;
+  //     transform: rotateY(0deg);
+  //   }
+  // }
+  // .kayakMovementBop {
+  //   position: fixed;
+  //   height: 18vh;
+  //   width: auto;
+  //   z-index: 1;
+  //   bottom: 20px;
+  //   transform: skew(0deg, 0deg);
+  //   left: -100px;
+  //   transition: 1s;
+  //   perspective-origin: left right;
+  //   perspective: 100px;
+  //   #kayakImg {
+  //     z-index: 1;
+  //     transition: 0.5s;
+  //     transform-style: preserve-3d;
+  //     transform: rotateY(-5deg);
+  //   }
+  // }
+  // .kayakMovementFloat {
+  //   position: fixed;
+  //   height: 20vh;
+  //   width: auto;
+  //   z-index: 2;
+  //   bottom: 20px;
+  //   left: -80px;
+  //   transition: 0.5s;
+  //   perspective-origin: left right;
+  //   perspective: 100px;
+  //   #kayakImg {
+  //     transition: 0.5s;
+  //     transform-style: preserve-3d;
+  //     transform: rotateY(-15deg);
+  //   }
+  // }
+  // .kayakJump {
+  //   position: fixed;
+  //   height: 25vh;
+  //   width: auto;
+  //   z-index: 2;
+  //   bottom: 20px;
+  //   left: -80px;
+  //   transition: 0.3s;
+  //   perspective-origin: left right;
+  //   perspective: 100px;
+  //   #kayakImg {
+  //     transition: 0.3s;
+  //     transform-style: preserve-3d;
+  //     transform: rotateY(-10deg);
+  //   }
+  // }
+}
