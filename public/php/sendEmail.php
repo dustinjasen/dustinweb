@@ -1,8 +1,26 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// testing/dev env: 
+// 
+// if (isset($_SERVER['HTTP_ORIGIN'])) {
+//   header('Access-Control-Allow-Origin: *');
+//   header('Access-Control-Allow-Credentials: true');
+//   header('Access-Control-Max-Age: 1000');
+// }
+// if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+//   if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
+//       header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+//   }
+
+//   if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
+//       header("Access-Control-Allow-Headers: Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization");
+//   }
+//   exit(0);
+// }
+
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -13,37 +31,41 @@ require '../php/PHPMailer/src/SMTP.php';
 
 $mail = new PHPMailer(true);
 
-$noReply = 'dustin@dustinsmith.tech';
-$toMe = 'dustin@dustinsmith.tech';
+$toCatch = '*******@********.***';
+$toMe = '*********@****.***';
+$json = file_get_contents("php://input");
+$data = json_decode($json, TRUE);
 
-$fromWho = $_POST[json_decode("yourName")];
-$message = $_POST["contactReason"];
+$from = $data['yourName'];
+$message = $data['contactReason'];
+$ccSender = $data['yourEmail'];
 
 try {
-  //Server settings
-  //$mail->SMTPDebug = 2;
-  $mail->isSMTP(); //Send using SMTP
-  $mail->Host = 'smtp.hostinger.com'; //Set the SMTP server to send through
-  $mail->SMTPAuth = true; //Enable SMTP authentication
-  $mail->Username = $noReply; //SMTP username
-  $mail->Password = ''; //SMTP password
-  $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-  $mail->Port = 465; 
+  $mail->isSMTP(); 
+  $mail->Host = 'smtp.********.com'; 
+  $mail->SMTPAuth = true; 
+  $mail->Username = $toCatch; 
+  $mail->Password = ''; 
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
+  $mail->Port = ***; 
+
 
   //Recipients
   $mail->setFrom($noReply, $fromWho);
-  $mail->addAddress($noReply, 'Dustin'); //Add a recipient
+  $mail->addAddress($noReply, ''); //Add a recipient
   // $mail->addCC( $ccSender );
   $mail->addBCC($toMe);
 
   //Content
   $mail->isHTML(true); //Set email format to HTML
-  $mail->Subject = 'Message from dustinsmith.tech';
-  $mail->Body = $message;
-  $mail->AltBody = $message;
+  $mail->Subject = 'Message from *******';
+  $mail->Body = $from." has sent you a message, requesting ".$message." and to reply to ".$ccSender;
+  $mail->AltBody = $from." has sent you a message, requesting ".$message." and to reply to ".$ccSender;
 
   $mail->send();
-  echo 'Message has been sent';
+  echo 'Thanks for checking this far into my code... your message has been sent ;o)';
 } catch (Exception $e) {
-  echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}
+  echo "Message could not be sent";
+};
+
+?>
