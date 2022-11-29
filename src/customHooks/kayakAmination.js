@@ -117,5 +117,6 @@ export function kayakAmination(event) {
   if (scrolling >= jumpToEnd) {
     const getKayakerIDfromDOM = document.getElementById("kayaker");
     getKayakerIDfromDOM.className = "kayakEnd";
+    document.getElementById("instructionFadeOut").style.display = "flex";
   }
 }

@@ -4,6 +4,10 @@ export const crmPhotos = [
     caption: "Desktop view - The update screen",
   },
   {
+    image: "assets/folio/crm/desktopCRM2.png",
+    caption: "Desktop view - Mid search for the product management employees",
+  },
+  {
     image: "assets/folio/crm/mobileCRM1.png",
     caption: "Mobile view - The read screen/index",
   },
@@ -18,16 +22,30 @@ export const mapPhotos = [
   {
     image: "assets/folio/map/mapDesktop1.jpg",
     caption:
-      "Desktop view - default map screen, with Wikipedia API enabled and the ISS in view",
+      "Desktop view - default map screen with all points enabled",
   },
   {
     image: "assets/folio/map/mapDesktop2.jpg",
     caption:
-      "Desktop view - satellite energy map, displaying a view of the earth at night and its most populated areas of Europe",
+      "Desktop view - satellite energy map, displaying a view of the earth at night and a weather modal",
+  },
+  {
+    image: "assets/folio/map/mapDesktop3.jpg",
+    caption:
+      "Desktop view - satellite map, displaying a close up of New Zealand and a point of interest",
+  },
+  {
+    image: "assets/folio/map/mapDesktop4.jpg",
+    caption:
+      "Desktop view - showing the detailed country information modal",
   },
   {
     image: "assets/folio/map/mapmobile1.jpg",
     caption: "Mobile view - country info for Togo, displaying the economy tab",
+  },
+  {
+    image: "assets/folio/map/mapmobile2.jpg",
+    caption: "Mobile view - displaying Brazil on the with an oceanography map",
   },
 ];
 

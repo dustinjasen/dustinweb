@@ -111,7 +111,7 @@
       border-radius: 25px;
       padding: 10px;
       width: auto;
-      max-width: 60vw;
+      max-width: 45vw;
       height: auto;
       max-height: 90vh;
       border: 5px solid rgba(255, 157, 0, 0.9);
@@ -154,6 +154,24 @@
     }
   }
 
+  #instructionFadeOut {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 150px;
+    padding: 15px;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    border: 3px solid yellowgreen;
+    border-radius: 15px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #fff;
+    --animate-delay: 1.25s;
+  }
+
   .emailmeWrapper {
     position: relative;
     display: flex;
@@ -190,7 +208,7 @@
         height: 85%;
         overflow-y: hidden;
 
-        .contactName {
+        #contactName {
           display: flex;
           align-items: center;
           flex-direction: column;
@@ -201,6 +219,7 @@
             margin: 0;
           }
           #yourName {
+            padding-top: 10px;
             width: 70%;
             background-color: transparent;
             text-align: center;
@@ -211,17 +230,10 @@
             font-family: sans-serif;
           }
 
-          .shortHR {
-            color: white;
-            font-weight: 600;
-            width: 40%;
-            border-width: 1px;
-            border-color: #fff;
-          }
         }
 
-        .contactReason {
-          display: flex;
+        #contactReason {
+          display: none;
           flex-direction: column;
           align-items: center;
           width: 100%;
@@ -266,8 +278,8 @@
           }
         }
 
-        .contactPref {
-          display: flex;
+        #contactPref {
+          display: none;
           flex-direction: column;
           align-items: center;
           width: 100%;
@@ -284,24 +296,22 @@
             align-items: center;
             justify-content: center;
 
-            details > summary {
-              list-style: none;
-            }
-
-            details summary::-webkit-details-marker {
-              display: none;
-            }
-
-            details {
+            .contactIconContainer {
               display: flex;
-              align-items: center;
               flex-direction: column;
+              align-items: center;
               justify-content: center;
-              cursor: pointer;
-              margin-right: 15px;
-
               .contactIconEmail,
-              .contactIconWhatsApp,
+              .contactIconWhatsApp {
+                display: flex;
+                vertical-align: middle;
+                width: 60px;
+                height: 60px;
+                margin-right: 30px;
+                padding: 4px;
+                border-radius: 50%;
+                cursor: pointer;
+              }
               .contactIconDiscord {
                 display: flex;
                 vertical-align: middle;
@@ -310,18 +320,21 @@
                 margin-right: 30px;
                 padding: 4px;
                 border-radius: 50%;
+                cursor: crosshair;
               }
               #yourNumber,
               #yourDiscord,
               #yourEmail {
                 display: flex;
-                min-width: 15vw;
-                width: 15vw;
-                height: 10vh;
+                align-items: center;
+                text-align: center;
+                min-width: 20vw;
+                width: auto;
                 min-height: 10vh;
+                height: 10vh;
                 background-color: transparent;
                 color: #fff;
-                font-size: 1.8rem;
+                font-size: 1rem;
                 padding-left: 15px;
                 border: none;
                 outline: none;
@@ -353,61 +366,127 @@
             }
           }
         }
-      }
 
-      #emailButton {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        top: 25px;
-        right: 25px;
-        height: 150px;
-        width: 150px;
-        border-radius: 50%;
-        background-color: maroon;
-        border: 4px solid white;
-        color: white;
-        font-size: 2rem;
-        padding: 25px;
-        cursor: pointer;
-        -webkit-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
-        box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
-      }
-      #emailButton:hover span {
-        display: none;
-      }
-      #emailButton:hover:before {
-        content: "do it";
-      }
-      #emailButton:active {
-        transition: 0.3s;
-        -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-      }
-      #emailButton:active:before {
-        content: "no going back now";
-        aspect-ratio: 1/1;
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100px;
-        width: 100px;
-        border-radius: 50%;
-        background-color: #7030e1;
-        border: 4px solid white;
-        color: white;
-        font-size: 1.25rem;
-        padding: 25px;
+        #confirmContact {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+
+          .contactSubHeading {
+            font-size: 3.5rem;
+            margin: 0;
+            text-align: center;
+            padding-bottom: 10px;
+          }
+          .contactMethodContainer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+
+            .contactInfoConfirm {
+              font-size: 1.5rem;
+              margin-bottom: 10px;
+            }
+          }
+
+          .contactInfoButtons {
+            display: flex;
+            gap: 10px;
+            padding-top: 10px;
+            font-size: 1.15rem;
+            .correctInfo {
+              border: none;
+              background-color: transparent;
+              cursor: pointer;
+              border: 2px solid greenyellow;
+              padding: 15px;
+              border-radius: 15px;
+              color: white;
+              font-size: 1.15rem;
+              font-family: "Poor Story", sans-serif;
+            }
+            .correctInfo:hover {
+              background-color: rgb(103, 154, 27);
+              cursor: pointer;
+              border: 2px solid white;
+              transition: 500ms;
+            }
+
+            .goBack {
+              border: none;
+              background-color: transparent;
+              cursor: pointer;
+              border: 2px solid grey;
+              padding: 15px;
+              border-radius: 15px;
+              color: white;
+              font-size: 1.15rem;
+              font-family: "Poor Story", sans-serif;
+            }
+
+            .goBack:hover {
+              border: 2px solid white;
+              background-color: grey;
+              transition: 500ms;
+              color: white;
+            }
+          }
+        }
+
+        #successScreen {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        #emailButton {
+          position: absolute;
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: 200px;
+          width: 200px;
+          border-radius: 50%;
+          background-color: maroon;
+          border: 4px solid white;
+          color: white;
+          font-size: 2rem;
+          padding: 25px;
+          cursor: pointer;
+          -webkit-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
+        }
+        #emailButton:hover span {
+          display: none;
+        }
+        #emailButton:hover:before {
+          content: "do it";
+        }
+        #emailButton:active {
+          transition: 0.3s;
+          -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        }
       }
     }
   }
+}
+
+.errorPopUp {
+  display: block;
+  font-size: 1.25rem;
+  text-align: center;
+  padding-top: 10px;
 }
 
 @media only screen and (max-width: 1440px) {
@@ -512,167 +591,153 @@
         display: none;
       }
     }
+
     .emailmeWrapper {
-      position: relative;
-      display: flex;
-      align-self: baseline;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-      height: 100vh;
-      width: 100%;
-
       #contactForm {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 0px;
-        width: 100%;
-        height: 100vh;
-
         .inputContainer {
           display: flex;
-          flex-direction: row;
-          justify-content: space-between;
+          flex-direction: column;
+          justify-content: center;
           align-items: center;
-          min-width: 100vw;
-          width: 100vw;
-          min-height: 100vh;
-          height: 100vh;
-          overflow-x: scroll;
-          scroll-behavior: smooth;
-          scroll-snap-type: x mandatory;
+          width: 75%;
+          height: 85%;
+          overflow-y: hidden;
 
-          .contactName {
-            scroll-snap-align: center;
-            justify-content: center;
-            min-height: 100vh;
-            height: 100vh;
-            min-width: 100vw;
-            width: 100vw;
-            padding-bottom: 0px;
+          #contactName {
             .contactSubHeading {
-              font-size: 2rem;
-              padding-bottom: 10px;
+              font-size: 1.8rem;
             }
             #yourName {
-              min-width: 300px;
-              width: 94%;
-              min-height: 18px;
-              height: 20px;
-              font-size: 18px;
-            }
-            .shortHR {
-              display: none;
+              width: 100%;
+              text-align: center;
+              font-size: 1rem;
             }
           }
 
-          .contactReason {
-            scroll-snap-align: center;
-            justify-content: center;
-            min-height: 100vh;
-            height: 100vh;
-            width: 100vw;
-            min-width: 100vw;
+          #contactReason {
             .contactSubHeading {
-              font-size: 1.9rem;
-              text-align: center;
-              margin: 0;
+              font-size: 1.8rem;
             }
             .contactRadioOptions {
-              flex-direction: column;
               .formLabel {
-                font-size: 1.2rem;
-                margin-right: 20px;
+                font-size: 1rem;
 
                 input[type="radio"] {
                   border: 0px;
-                  width: 1.5rem;
-                  height: 1.5rem;
+                  width: 1.2rem;
+                  height: 1.2rem;
+                  border: none;
+                  outline: none;
+                  cursor: pointer;
                   margin-bottom: 5px;
                 }
               }
             }
-            .shortHR {
-              display: none;
-            }
           }
 
-          .contactPref {
-            scroll-snap-align: center;
-            justify-content: center;
-            min-height: 100vh;
-            height: 100vh;
-            width: 100vw;
-            min-width: 100vw;
+          #contactPref {
             .contactSubHeading {
-              font-size: 1.9rem;
-              margin-bottom: 15px;
+              font-size: 1.8rem;
             }
             .contactMethodContainer {
               flex-direction: column;
-              max-width: 100%;
-
-              details {
-                .contactIconEmail,
-                .contactIconWhatsApp,
-                .contactIconDiscord {
-                  width: 40px;
-                  height: 40px;
-                  margin-right: 0px;
-                  padding: 4px;
-                  border-radius: 50%;
-                  margin-left: 10px;
-                }
-                #yourNumber,
-                #yourDiscord,
-                #yourEmail {
-                  display: flex;
-                  min-width: 300px;
-                  width: 98%;
-                  min-height: 20px;
-                  height: 22px;
-                  font-size: 18px;
+              .contactIconEmail,
+              .contactIconWhatsApp,
+              .contactIconDiscord {
+                display: flex;
+                vertical-align: middle;
+                width: 50px;
+                height: 50px;
+                margin-right: 0px;
+                padding: 10px;
+                border-radius: 50%;
+              }
+              #yourNumber,
+              #yourDiscord,
+              #yourEmail {
+                display: flex;
+                min-width: 100%;
+                width: 100%;
+                height: 10vh;
+                min-height: 10vh;
+                background-color: transparent;
+                color: #fff;
+                font-size: 1rem;
+                padding-left: 15px;
+                border: none;
+                outline: none;
+                font-weight: normal;
+                font-family: sans-serif;
+                :focus {
                   background-color: transparent;
-                  padding-left: 5px;
-                  margin-left: 10px;
-                  font-weight: normal;
                 }
+                :active {
+                  background-color: transparent;
+                }
+              }
+              .contactIconWhatsApp:hover {
+                background-color: #25d366;
+                padding: 4px;
+                border-radius: 50%;
+              }
+              .contactIconDiscord:hover {
+                background-color: #5562ea;
+                padding: 4px;
+                border-radius: 50%;
+              }
+              .contactIconEmail:hover {
+                background-color: white;
+                padding: 4px;
+                border-radius: 50%;
+                color: black;
+              }
+            }
+          }
+
+          #confirmContact {
+            .contactSubHeading {
+              font-size: 2rem;
+            }
+            .contactMethodContainer {
+              .contactInfoConfirm {
+                font-size: 1.2rem;
+              }
+            }
+
+            .contactInfoButtons {
+              font-size: 1.1rem;
+              .correctInfo {
+                padding: 15px;
+                border-radius: 15px;
+                color: white;
+                font-size: 1.1rem;
+              }
+
+              .goBack {
+                font-size: 1.1rem;
               }
             }
           }
         }
-
-        #emailButton {
-          top: unset;
-          bottom: 25px;
-          right: 25px;
-          height: 70px;
-          width: 70px;
-          font-size: 1.1rem;
-          text-align: center;
-          cursor: pointer;
-          border: 2px solid white;
-          -webkit-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
-          -moz-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
-          box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
-        }
-        #emailButton:hover span {
-          display: none;
-        }
-        #emailButton:hover:before {
-          content: "sent";
-        }
-        #emailButton:active:before {
-          content: "";
-          height: 0px;
-          width: 0px;
-          border: 0px solid white;
-          font-size: 0rem;
-          padding: 0px;
-        }
       }
     }
+
+    #instructionFadeOut {
+      width: 190px;
+      height: 110px;
+      padding: 15px;
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      border: 3px solid yellowgreen;
+      border-radius: 15px;
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #fff;
+      --animate-delay: 1.25s;
+    }
+  }
+  .errorPopUp {
+    font-size: 1rem;
   }
 }

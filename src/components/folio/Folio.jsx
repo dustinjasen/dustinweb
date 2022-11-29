@@ -31,17 +31,17 @@ const Folio = () => {
   const [openMHW, setOpenMHW] = useState(false);
   const [openMHWinfo, setOpenMHWinfo] = useState(false);
 
-  const [helpTip, SetHelpTip] = useState(false);
-  const [insights, SetInsights] = useState(false);
+  const [helpTip, setHelpTip] = useState(false);
+  const [insights, setInsights] = useState(false);
 
   const helpToggle = () => {
-    SetInsights(false);
-    SetHelpTip(!helpTip)
+    setInsights(false);
+    setHelpTip(!helpTip)
   };
 
   const insightToggle = () => {
-    SetHelpTip(false);
-    SetInsights(!insights)
+    setHelpTip(false);
+    setInsights(!insights)
   };
 
   const handleCRMSlideShow = (direction) => {
@@ -183,7 +183,7 @@ const Folio = () => {
       </div>
 
       <p className="folioHeading">
-        ...featured projects
+        examples
       </p>
 
       <div className="folioWrapper">
@@ -195,7 +195,7 @@ const Folio = () => {
             <div className="folioThumbContainer">
               <img src={devLogos[13].mhw}
                 className="folioThumbMHWImage"
-                alt="picture of MHW logo"
+                alt="MHW logo"
                 onClick={() => setOpenMHW(!openMHW)} />
               <TipsAndUpdates
                 className="folioInfoMHW" onClick={() => setOpenMHWinfo(!openMHWinfo)} />
@@ -205,11 +205,11 @@ const Folio = () => {
             <div className="folioThumbContainer">
               <img src={devLogos[14].dir}
                 className="folioThumbDIRImage"
-                alt="picture of DIR logo"
+                alt="DIR logo"
                 onClick={() => setOpenCRM(!openCRM)} />
               <TipsAndUpdates
                 className="folioInfoDIR" onClick={() => setOpenCRMinfo(!openCRMinfo)} />
-              <a href="https://dustinsmith.tech/DIR" target="_blank">
+              <a href="https://dustinsmith.tech/DIR" target="_blank" rel="noreferrer">
                 <Link className="folioLinkDIR" />
               </a>
             </div>
@@ -218,12 +218,12 @@ const Folio = () => {
               className="folioThumbContainer" >
               <img src={devLogos[15].specks}
                 className="folioThumbMAPImage"
-                alt="picture of Specks logo"
+                alt="Specks logo"
                 onClick={() => setOpenMAP(!openMAP)} />
               <TipsAndUpdates
                 className="folioInfoSpecks" onClick={() => setOpenMAPinfo(!openMAPinfo)} />
 
-              <a href="https://specksmap.online" target="_blank">
+              <a href="https://specksmap.online" target="_blank" rel="noreferrer">
                 <Link className="folioLinkSpecks" />
               </a>
             </div>
@@ -240,7 +240,7 @@ const Folio = () => {
             <ArrowCircleRightOutlined className="goLeft"
               onClick={() => handleCRMSlideShow("prevCRM")} />
             <div className="folioSliderWrapper" onClick={() => setOpenCRM(!openCRM)}>
-              <img src={crmPhotos[slideImageNumberCRM].image} className="folioImg" alt="" />
+              <img src={crmPhotos[slideImageNumberCRM].image} className="folioImg" alt="crm slide images" />
               <p className="slideCaption">{crmPhotos[slideImageNumberCRM].caption}</p>
             </div>
           </div>
@@ -255,7 +255,7 @@ const Folio = () => {
               onClick={() => handleMAPSlideShow("prevMAP")} />
 
             <div className="folioSliderWrapper" onClick={() => setOpenMAP(!openMAP)}>
-              <img src={mapPhotos[slideImageNumberMAP].image} className="folioImg" alt="" />
+              <img src={mapPhotos[slideImageNumberMAP].image} className="folioImg" alt="specks map slides" />
               <p className="slideCaption">{mapPhotos[slideImageNumberMAP].caption}</p>
             </div>
 
@@ -271,7 +271,7 @@ const Folio = () => {
               onClick={() => handleMHWSlideShow("prevMHW")} />
 
             <div className="folioSliderWrapper" onClick={() => setOpenMHW(!openMHW)}>
-              <img src={mhwAll[slideImageNumberMHW].image} className="folioImg" alt="" />
+              <img src={mhwAll[slideImageNumberMHW].image} className="folioImg" alt="myhealth ward slides" />
               <p className="slideCaption">{mhwAll[slideImageNumberMHW].caption}</p>
             </div>
 

@@ -1,266 +1,472 @@
 import { EmailOutlined, WhatsApp } from "@mui/icons-material";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./email.scss";
 import cord from "./discordWhite.png";
-import {
-  HelpOutline,
-  Lightbulb,
-  QuestionMark,
-} from "@mui/icons-material";
+import { HelpOutline, Lightbulb, QuestionMark } from "@mui/icons-material";
 import me from "../../components/profilePic.png";
-
+import "animate.css";
 
 const Email = () => {
+  //Help container states
+  const [inputInfo, setInputInfo] = useState({});
+  const [helpTip, setHelpTip] = useState(false);
+  const [insights, setInsights] = useState(false);
 
-  const [inputInfo, setInputInfo] = useState({})
+  //Custom form validation states
+  const [nameErr, setNameErr] = useState(false);
 
-  const [helpTip, SetHelpTip] = useState(false);
-  const [insights, SetInsights] = useState(false);
+  const [openEmail, setOpenEmail] = useState(false);
+  const [emailErr, setEmailErr] = useState(false);
 
+  const [openWhatsApp, setOpenWhatsApp] = useState(false);
+  const [whatsAppErr, setWhatsAppErr] = useState(false);
+
+  const [openDiscord, setOpenDiscord] = useState(false);
+  const [discordErr, setDiscordErr] = useState(false);
+
+  //help container handling
   const helpToggle = () => {
-    SetInsights(false);
-    SetHelpTip(!helpTip)
+    setInsights(false);
+    setHelpTip(!helpTip);
   };
 
   const insightToggle = () => {
-    SetHelpTip(false);
-    SetInsights(!insights)
+    setHelpTip(false);
+    setInsights(!insights);
   };
 
+  //handleTogglingOfContactPref
+  const handleEmailOpen = () => {
+    setOpenDiscord(false);
+    setOpenEmail(!openEmail);
+    setOpenWhatsApp(false);
+    setWhatsAppErr(false);
+    setDiscordErr(false);
+  };
+  const handleWhatsAppOpen = () => {
+    setOpenDiscord(false);
+    setOpenEmail(false);
+    setOpenWhatsApp(!openWhatsApp);
+    setEmailErr(false);
+    setDiscordErr(false);
+  };
+  const handleOpenDiscord = () => {
+    setOpenDiscord(!openDiscord);
+    setOpenEmail(false);
+    setOpenWhatsApp(false);
+    setEmailErr(false);
+    setWhatsAppErr(false);
+  }
+
+  //handle input changes
   const onChangeOfInput = (e) => {
     setInputInfo((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
-  }
+  };
 
-  const [mailSent, setmailSent] = useState(false);
-  const [error, setError] = useState(null);
+  //handle submit
   const submitEmail = (e) => {
     e.preventDefault();
     const emailContent = { ...inputInfo };
     const getKayakerIDfromDOM = document.getElementById("kayaker");
     getKayakerIDfromDOM.className = "kayakSendOff";
-    console.log(emailContent)
-    axios.post('./php/sendEmail.php', emailContent)
-      .then(result => {
-        if (result.data.sent) {
-          setmailSent(result.data.sent)
-          setError(false)
-        } else {
-          setError(true)
-        }
-      })
-      .catch(error => setError(error.message));
-  }
+    // axios.post('http://localhost:3001/public/php/sendEmail.php', emailContent)
+
+    const successScreen = () => {
+      document.getElementById("confirmContact").style.display = "none";
+      document.getElementById("successScreen").style.display = "flex";
+    };
+
+    try {
+      axios.post("./php/sendEmail.php", emailContent).then({ successScreen });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const scrollBackABit = () => {
-    document.getElementById('screenThree').scrollIntoView();
+    document.getElementById("screenThree").scrollIntoView();
+  };
+
+  const validateName = useRef();
+
+  const nameInputValidation = () => {
+    const lettersOnly = /^[A-Za-z]+$/;
+    if (validateName.current.value.match(lettersOnly)) {
+      setNameErr(false);
+      document.getElementById("contactName").style.display = "none";
+      document.getElementById("contactReason").style.display = "flex";
+    } else {
+      setNameErr(true);
+    }
+  };
+
+  const contactReasonValidation = () => {
+    document.getElementById("contactReason").style.display = "none";
+    document.getElementById("contactPref").style.display = "flex";
+  };
+
+  const validateEmail = useRef();
+  const validateDiscord = useRef();
+  const validateNumber = useRef();
+
+  const contactDetailsValidationEmail = () => {
+    const validEmailAddress = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (validateEmail.current.value.match(validEmailAddress)) {
+      setEmailErr(false);
+      document.getElementById("confirmContact").style.display = "flex";
+      document.getElementById("contactPref").style.display = "none";
+    } else {
+      setEmailErr(true);
+    }
   }
 
+  const contactDetailsValidationNumber = () => {
+    const numberTooShort = validateNumber.current.value.length < 7;
+    const numberNotaNumber = isNaN(validateNumber.current.value);
+
+    if (numberTooShort || numberNotaNumber) {
+      setWhatsAppErr(true);
+    } else {
+      setWhatsAppErr(false);
+      document.getElementById("confirmContact").style.display = "flex";
+      document.getElementById("contactPref").style.display = "none";
+    }
+
+  }
+
+  const contactDetailsValidationDiscord = () => {
+    const emptyDiscord = "";
+    if (validateDiscord.current.value > emptyDiscord) {
+      setDiscordErr(false);
+      document.getElementById("confirmContact").style.display = "flex";
+      document.getElementById("contactPref").style.display = "none";
+    } else {
+      setDiscordErr(true);
+    }
+  }
+
+  const handleReset = () => {
+    setInputInfo({});
+    setOpenEmail(false); setOpenWhatsApp(false); setOpenDiscord(false)
+    document.getElementById("contactName").style.display = "flex";
+    document.getElementById("contactReason").style.display = "none";
+    document.getElementById("contactPref").style.display = "none";
+    document.getElementById("confirmContact").style.display = "none";
+  };
+
   return (
-    <div className="emailmeContainer">
+    <div className='emailmeContainer'>
+      <div
+        className='animate__animated animate__fadeOut animate__delay-5s animate__slower'
+        id='instructionFadeOut'
+      >
+        After entering your details, touch or click anywhere on the screen to
+        continue
+      </div>
 
-      <div className="scrollPrevPage" onClick={scrollBackABit}>prev page</div>
+      <div
+        className='scrollPrevPage'
+        onClick={scrollBackABit}
+      >
+        prev page
+      </div>
 
-      <div className="tipsIconContainer">
+      <div className='tipsIconContainer'>
         <HelpOutline
-          className="aboutIcon"
+          className='aboutIcon'
           onClick={helpToggle}
         />
         <Lightbulb
-          className="insightsIcon"
+          className='insightsIcon'
           onClick={insightToggle}
         />
       </div>
 
-      <div className="helpContentContainer">
+      <div className='helpContentContainer'>
         {helpTip && (
-          <div className="aboutTipContainer" onClick={helpToggle}>
-            <QuestionMark className="aboutIconMark" />
-            <div className="aboutTipText">
+          <div
+            className='aboutTipContainer'
+            onClick={helpToggle}
+          >
+            <QuestionMark className='aboutIconMark' />
+            <div className='aboutTipText'>
               <p>
-                The final section of this website - but not the least in importance.
+                The final section of this website - but not the least in
+                importance.
               </p>
               <p>
-                It appears in two adaptive forms, desktop and mobile.<br />
-                The desktop site contains the entire form on one screen<br />
-                The mobile verison spans across three screens.<br />
+                Mobile users - tap your screen to continue to another input
+                <br />
+                Desktop users - press tab, or click the screen to continue
+                <br />
                 For further information on the design, use the insights bulb.
               </p>
               <h4> Thanks for visiting and browsing this far! </h4>
             </div>
-
           </div>
         )}
 
         {insights && (
           <>
-            <img src={me} className="myBubbleHead" alt="" />
-            <div className="insightsPointer"></div>
-            <div className="insightsContainer" onClick={insightToggle}>
-              <div className="insightsText">
-                <p className="insightsHeading">Dustin's Insights</p>
+            <img
+              src={me}
+              className='myBubbleHead'
+              alt=''
+            />
+            <div className='insightsPointer'></div>
+            <div
+              className='insightsContainer'
+              onClick={insightToggle}
+            >
+              <div className='insightsText'>
+                <p className='insightsHeading'>Dustin's Insights</p>
                 <p>
-                  Contact forms are easily the most underrated area of any website or application. It is the doorway to engagement with users.
-                </p>
-                <p>
-                  The form - as with the entire site - has been redeveloped multiple times.<br />
-                  I originally included a validated form, with rulesets and alike - the usual industry standard.
-                  However, there was, and remains, absolutely no reason to ask any visitor to write a message to me -
-                  you are reading this and visiting my site...The emphasis should on the developer to respond with a meaningful conversation. 
-                </p>
-                <p>
-                  Therefore, I have limited contact with three options and methods. Recognising that people, such as myself,
-                  prefer WhatsApp or, gamer's, who enjoy Discord - I thought it important and appropriate in 2022 to place in these options.
-                </p>
-                <p>
-                  The form has been built with AXIOS and PHP. AXIOS bundles your name, the reason for contact and your preferred method of reply.
-                  This is sent across as a JSON object to a PHP file. At which point, the PHP (PHPMailer utilised as well) file decodes the JSON object.<br />
-                  And then the real 1971 magic happens... ... ...I get an email :)
+                  Contact forms are easily the most underrated area of any
+                  website or application. It is the doorway to engagement with
+                  users.
                 </p>
                 <p>
-                  The mobile adaptive version has 3 screens to it and the reason for this is to accommodate all devices when a keyboard appears for input.
-                  I want visitors to see what they are writing, without feeling cramped. Therefore, mobile users - swipe after each section and
-                  push the big red button when you are done!
-                </p>
-                <p>Unfortunately, there are no fun facts... The kayaker ends his journey here with you,
-                  by either zooming off on send when used with a desktop or immediately on mobile
-                  (screen size played a deciding factor here). 
+                  The form - as with the entire site - has been redeveloped
+                  multiple times.
+                  <br />I have tried to make this process as friendly and warm as possible.
+                  There is no need to think about a custom message to write,
+                  I can reach out from this point.
                 </p>
                 <p>
-                  The big red button had to be done. Just... because...!
+                  Methods of contact have been expanded to include email, WhatsApp
+                  and for gamers who enjoy Discord - I thought it
+                  important and appropriate in 2022 to place in these options.
                 </p>
-                <p> Thanks so much for reading, visiting and taking the time out of your day! </p>
-
+                <p>
+                  During your input, a custom-designed JavaScript validation takes place.
+                  You cannot enter a number for your name,
+                  letters in your phone number or construct an incomplete email.
+                  Errors are shown by using React's state management as opposed to setCustomValidity.
+                  The reason behind this was due to the design of the form. Layout and HTML/DOM tree defaults
+                  were an important consideration, a solution had to be found that worked around this.
+                </p>
+                <p>
+                  The backend of the form has been built with PHP. AXIOS sits in the front and
+                  bundles your contact information then sends it as a JSON object.
+                  PHP (PHPMailer utilised as well) decodes the JSON object received by AXIOS.
+                  <br />
+                  And then the real 1971 magic happens... ... ...I get an email
+                  :)
+                </p>
+                <p>
+                  The mobile and desktop sites were originally built adaptively
+                  to ensure that all screens and devices can use this form.
+                  Samsung, Apple, Huawei etc., have creative ways of displaying their onscreen
+                  keyboards. The solution, to keep aligned with the theme, was to build a clean
+                  screen and contact form.
+                </p>
+                <p>
+                  Unfortunately, there are no fun facts... The kayaker ends his
+                  journey here with you, by either zooming off on send when used
+                  with a desktop or immediately on mobile (screen size vs clutter played a
+                  deciding factor here).
+                </p>
+                <p>
+                  Thanks so much for reading, visiting and taking the time out
+                  of your day!
+                </p>
               </div>
-
             </div>
           </>
         )}
       </div>
-      <div className="emailmeWrapper">
-        <form id="contactForm" onSubmit={submitEmail}>
-
-          <div className="inputContainer">
-
-            <div className="contactName">
-              <p className="contactSubHeading">
-                whats your name?
-              </p>
+      <div className='emailmeWrapper'>
+        <form
+          id='contactForm'
+          onSubmit={submitEmail}
+        >
+          <div className='inputContainer'>
+            <div id='contactName'>
+              <p className='contactSubHeading'>whats your name?</p>
               <input
-                placeholder="...let's chat!..."
-                type="text"
-                id="yourName"
-                name="yourName"
+                placeholder="...let's talk!..."
+                type='text'
+                id='yourName'
+                name='yourName'
                 onChange={onChangeOfInput}
                 maxLength={20}
+                onBlur={nameInputValidation}
+                ref={validateName}
                 required
               />
-              <hr className="shortHR" />
+              {nameErr && (
+                <div className="errorPopUp">Your name can only contain letters</div>
+              )}
             </div>
 
-            <div className="contactReason">
-              <p className="contactSubHeading">
-                i'll reply & break the ice
+            <div id='contactReason'>
+              <p className='contactSubHeading'>
+                hey {inputInfo.yourName}! choose a topic
               </p>
-              <div className="contactRadioOptions">
+              <div className='contactRadioOptions'>
                 <label
-                  htmlFor="workTogether"
-                  className="formLabel">
+                  htmlFor='workTogether'
+                  className='formLabel'
+                >
                   <input
-                    type="radio"
-                    id="workTogether"
-                    name="contactReason"
-                    value="workTogether"
+                    type='radio'
+                    id='workTogether'
+                    name='contactReason'
+                    value='to work together'
                     onChange={onChangeOfInput}
+                    onBlur={contactReasonValidation}
                   />
-                  Work together</label>
+                  work together
+                </label>
 
                 <label
-                  htmlFor="CV"
-                  className="formLabel">
+                  htmlFor='CV'
+                  className='formLabel'
+                >
                   <input
-                    type="radio"
-                    id="CV"
-                    name="contactReason"
-                    value="CVrequest"
-                    onChange={onChangeOfInput} />
-                  Request profile</label>
+                    type='radio'
+                    id='CV'
+                    name='contactReason'
+                    value='me to send you my CV'
+                    onChange={onChangeOfInput}
+                    onBlur={contactReasonValidation}
+                  />
+                  request profile
+                </label>
 
                 <label
-                  htmlFor="talk"
-                  className="formLabel">
+                  htmlFor='talk'
+                  className='formLabel'
+                >
                   <input
-                    type="radio"
-                    id="talk"
-                    name="contactReason"
-                    value="chat"
-                    onChange={onChangeOfInput} />
-                  Chew fat</label>
+                    type='radio'
+                    id='talk'
+                    name='contactReason'
+                    value='to chat!'
+                    onChange={onChangeOfInput}
+                    onBlur={contactReasonValidation}
+                  />
+                  chew fat
+                </label>
               </div>
-              <hr className="shortHR" />
+              <p className='contactSubHeading'>i'll reply & break the ice!</p>
             </div>
 
-            <div className="contactPref">
-              <p className="contactSubHeading">
-                how should we chat?
-              </p>
+            <div id='contactPref'>
+              <p className='contactSubHeading'>pick your fav method</p>
 
-              <div className="contactMethodContainer">
+              <div className='contactMethodContainer'>
 
-                <details>
-                  <summary>
-                    <EmailOutlined className="contactIconEmail" />
-                  </summary>
-                  <input
-                    placeholder="...email here..."
-                    type="email"
-                    id="yourEmail"
-                    name="yourEmail"
-                    onChange={onChangeOfInput}
+                <div className="contactIconContainer">
+                  <EmailOutlined
+                    className='contactIconEmail'
+                    onClick={handleEmailOpen} />
+
+                  {openEmail && (
+                    <input
+                      placeholder='email? awesome!'
+                      id='yourEmail'
+                      type='text'
+                      name='yourEmail'
+                      onChange={onChangeOfInput}
+                      onBlur={contactDetailsValidationEmail}
+                      ref={validateEmail}
+                    />
+                  )}
+                  {emailErr && (<div className="errorPopUp">please check your email address</div>)}
+                </div>
+
+                <div className="contactIconContainer">
+                  <WhatsApp
+                    className='contactIconWhatsApp'
+                    onClick={handleWhatsAppOpen} />
+                  {openWhatsApp && (
+                    <input
+                      placeholder="i'll text you!"
+                      type='text'
+                      id='yourNumber'
+                      name='yourEmail'
+                      onChange={onChangeOfInput}
+                      onBlur={contactDetailsValidationNumber}
+                      ref={validateNumber}
+                      maxLength={15}
+                    />
+                  )}
+                  {whatsAppErr && (<div className="errorPopUp">please check your number</div>)}
+                </div>
+
+                <div className="contactIconContainer">
+
+                  <img
+                    src={cord}
+                    className='contactIconDiscord'
+                    alt=''
+                    onClick={handleOpenDiscord}
                   />
-                </details>
 
-                <details>
-                  <summary><WhatsApp className="contactIconWhatsApp" />
-                  </summary>
-                  <input
-                    placeholder="...number here..."
-                    type="number"
-                    id="yourNumber"
-                    name="yourEmail"
-                    maxLength={12}
-                    onChange={onChangeOfInput}
-                  />
-                </details>
+                  {openDiscord && (
+                    <input
+                      placeholder="whats your tag"
+                      type='text'
+                      id='yourDiscord'
+                      name='yourEmail'
+                      onChange={onChangeOfInput}
+                      onBlur={contactDetailsValidationDiscord}
+                      ref={validateDiscord}
+                    />
+                  )}
+                  {discordErr && (<div className="errorPopUp">please check your tag</div>)}
 
-                <details>
-                  <summary>
-                    <img src={cord} className="contactIconDiscord" alt="" />
-                  </summary>
-                  <input
-                    placeholder="...tag here..."
-                    type="text"
-                    id="yourDiscord"
-                    name="yourEmail"
-                    onChange={onChangeOfInput}
-                  />
-                </details>
+                </div>
 
               </div>
             </div>
 
+            <div id='confirmContact'>
+              <p className='contactSubHeading'>are these details correct?</p>
+
+              <div className='contactMethodContainer'>
+                <div className='contactInfoConfirm'>
+                  you are {inputInfo.yourName}
+                </div>
+                <div className='contactInfoConfirm'>
+                  i'll reach you @ {inputInfo.yourEmail}
+                </div>
+                <div className='contactInfoConfirm'>
+                  you'd like {inputInfo.contactReason}
+                </div>
+
+                <div className='contactInfoButtons'>
+                  <button
+                    className='correctInfo'
+                    type='submit'
+                  >
+                    perfect!
+                  </button>
+                  <button
+                    className='goBack'
+                    type='reset'
+                    onClick={handleReset}
+                  >
+                    nope, try again
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id='successScreen'></div>
+
+            {/* <button id="emailButton" type="submit" onClick={submitEmail}>
+              <span>push to send</span>
+            </button> */}
           </div>
-
-          <button id="emailButton" type="submit">
-            <span>push me</span>
-          </button>
-
         </form>
       </div>
-    </div >
+    </div>
   );
 };
 
